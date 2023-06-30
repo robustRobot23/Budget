@@ -1,32 +1,28 @@
+'''
+    Contains the personalised simulation information
+'''
+
 import Account 
- 
-# Example personal.py module
-# Customise this to your own situtation
+import theBank
 
-Spending = Account.Account("Spending", 50)
-Savings = Account.Account("Savings",123) 
+MyBank = theBank.Bank()
 
-accounts = [Spending,
-            Savings]
+MyBank.addAccount(Account.Account("Spending", 100))
+MyBank.addAccount(Account.Account("Short Term Savings",220.00))
+MyBank.addAccount(Account.Account("Secret Account", 65))
+MyBank.addAccount(Account.Account("Savings",342))
+MyBank.hideAccount("Secret Account")
+MyBank.defualtSpending("Spending")
 
-def send(amount, receivingAccount, sendingAccount = Spending):
-    receivingAccount.transact(amount)
-    sendingAccount.transact(-amount)
 
 def weeklyTransactions():
-    Spending.transact(300)
-    Spending.transact(24)
-    Spending.transact(-200)
-    Spending.transact(-60)
-    send(50, Savings)
+    MyBank.transact(100)
+    MyBank.transact(5)
+    MyBank.transact(-200)
+    MyBank.transact(-100)
+    MyBank.transfer(10, "Secret Account")
+    MyBank.transfer(15, "Short Term Savings")
+    MyBank.transfer(40, "Savings")
 
 def monthlyTransactions():
-    Spending.transact(-15)
-
-def findAccountIndex(inputAccount):
-    match inputAccount:
-        case "Spending":
-            return 0
-        case "Savings":
-            return 1
-    raise Exception("Account doesn't exist in accounts list")
+    MyBank.transact(-17)

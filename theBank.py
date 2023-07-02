@@ -28,6 +28,12 @@ class Bank:
     def checkDefualtExists(self):
         if self.defualtSpendingAccount == None:
             raise Exception("No defualt Account set, please specify")
+        
+    def findTotalBalance(self):
+        sum = 0
+        for account in self.accounts:
+            sum += account.balance
+        return sum
     
     def transact(self, amount, sendingAccountName = None):
         if sendingAccountName == None:
@@ -41,6 +47,7 @@ class Bank:
             raise Exception("Unable to transact from account")
 
     def transfer(self, amount, receivingAccountName, sendingAccountName = None):
+        startingBalance = self.findTotalBalance()
         if sendingAccountName == None:
             self.checkDefualtExists()
             sendingAccount = self.defualtSpendingAccount
@@ -48,7 +55,7 @@ class Bank:
             sendingAccount = self.findAccount(sendingAccountName)
 
         try:
-            sendingAccount.transact(amount)
+            sendingAccount.transact(-amount)
         except:
             raise Exception("Unable to transfer to sending account, account may not exist")
 
@@ -61,6 +68,9 @@ class Bank:
         
         # print(f"Sending ${amount} to {receivingAccount.name} from {sendingAccount.name}")
 
+        finishingBalance = self.findTotalBalance()
+        if startingBalance < finishingBalance -0.5 or startingBalance > finishingBalance + 0.5:
+            raise Exception("Starting Balance doesn't equal finishing Balance after transfer")
 
     def updateAccountsHistory(self):
         for account in self.accounts:

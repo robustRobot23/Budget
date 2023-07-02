@@ -1,18 +1,18 @@
-# import personalPrototype as personal
-# Bank =  personalPrototype.MyBank
+import personalPrototype as personalInfo
+Bank =  personalInfo.MyBank
 
-import personal
-Bank = personal.Hayden
+# import personal as personalInfo
+# Bank = personal.Hayden
 
 week = 1
-weeks = 2
+weeks = 25
 
 while(week <= weeks):
     print("Week", week)
 
-    personal.weeklyTransactions()
+    personalInfo.weeklyTransactions()
     if week %4 == 0:
-        personal.monthlyTransactions()
+        personalInfo.monthlyTransactions()
 
     Bank.updateAccountsHistory()    
     Bank.printBalance()

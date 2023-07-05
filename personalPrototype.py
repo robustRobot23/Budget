@@ -16,7 +16,7 @@ MyBank.defualtSpending("Spending")
 
 
 def weeklyTransactions():
-    MyBank.transact(500)
+    MyBank.transact(400)
     MyBank.transact(5)
     MyBank.transact(-200)
     MyBank.transact(-100)
@@ -25,4 +25,5 @@ def weeklyTransactions():
     MyBank.transfer(40, "Savings")
 
 def monthlyTransactions():
-    MyBank.transact(-17)
+    MyBank.transact(-13)
+    MyBank.transact(-43)

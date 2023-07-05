@@ -13,11 +13,17 @@ class Account:
         else:
             self.balance += transactAmount
             self.weeklyBalance += transactAmount
+            self.weeklyBalance = round(self.weeklyBalance, 2)
 
         # print(f"{self.name} transacted ${transactAmount}")
         # self.log.update({description,transactAmount})
 
     def update(self):
-        self.history.append(self.balance)
-        # print(f"Weekly Change for {self.name}: ${self.weeklyBalance}")
+        self.history.append(round(self.balance,2))
         self.weeklyBalance = 0
+
+    def difference(self):
+        if len(self.history) >= 2:
+            print(f"Weekly Change for {self.name}: ${round(self.history[-1] - self.history[-2],2)}")
+        else: 
+            print("Not enough history yet")

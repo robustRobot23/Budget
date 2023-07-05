@@ -2,7 +2,7 @@ import personalPrototype as personalInfo
 Bank =  personalInfo.MyBank
 
 # import personal as personalInfo
-# Bank = personal.Hayden
+# Bank = personalInfo.Hayden
 
 week = 1
 weeks = 25
@@ -14,8 +14,9 @@ while(week <= weeks):
     if week %4 == 0:
         personalInfo.monthlyTransactions()
 
-    Bank.updateAccountsHistory()    
-    Bank.printBalance()
+    Bank.updateAccountsHistory() 
+    Bank.printDefaultBalanceChange()
+    # Bank.printBalance()
     week += 1 
 
 Bank.graphBalances(weeks)

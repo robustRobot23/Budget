@@ -75,6 +75,8 @@ class Bank:
     def updateAccountsHistory(self):
         for account in self.accounts:
             account.update()
+        
+
 
     def printBalance(self):
         print("Finishing Balance:")
@@ -94,3 +96,6 @@ class Bank:
         plt.ylabel("$")
         plt.legend()
         plt.show()
+
+    def printDefaultBalanceChange(self):
+        print(self.defualtSpendingAccount.difference())
